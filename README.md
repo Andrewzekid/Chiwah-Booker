@@ -104,7 +104,7 @@ Replace YOUR_USERNAME with your macOS username
 <pre><code># Using Homebrew (recommended)
 brew install node
 
-# Or download from nodejs.org</code></pre>
+Or download from nodejs.org</code></pre>
 </li>
 <li><strong>Install project dependencies</strong>:
 <pre><code>cd ~/Downloads/Chiwah-Booker
@@ -114,7 +114,7 @@ npm install</code></pre>
 <pre><code># Copy the example environment file
 cp .env.example .env
 
-# Edit with your credentials
+Edit with your credentials
 nano .env</code></pre>
 </li>
 <li><strong>Test the script manually first</strong>:
