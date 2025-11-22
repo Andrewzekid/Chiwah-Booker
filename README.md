@@ -1,8 +1,8 @@
 # Chiwah Automated Booker
 
-##Steps to configure:
+<h3>Steps to configure:</h3>
 
-##1. Modify run.bat
+<h3>1. Modify run.bat</h3>
 For windows, we will use task scheduler to schedule a task that runs the program.  Change the line:
 cd /d "C:\Users\andre\Downloads\Chiwah Booker"
 
@@ -10,15 +10,15 @@ To
 cd /d "C:\Users\Your Username\Downloads\Chiwah Booker"
 and replace "Your Username" with your username. 
 
-##2. Add .env
+<h3>2. Add .env</h3>
 Rename .env.example to .env.
 Inside .env.example:
 HKU_USERNAME=YOUR USERNAME
 HKU_PASSWORD=YOUR PASSWORD
 Change the username and password to your username and password.
 
-##Windows Configuration:
-##Task Scheduler
+<h3>Windows Configuration:</h3>
+<h3>##Task Scheduler</h3>
 1.Open Task Scheduler (search in Start menu)
 2.Click Create Basic Task
 3.Name: HKU Library Booking
