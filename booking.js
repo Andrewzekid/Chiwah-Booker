@@ -14,6 +14,24 @@ class HKULibraryBooking {
         this.config = null;
     }
 
+    getTomorrowDate() {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const year = tomorrow.getFullYear();
+        const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const day = String(tomorrow.getDate()).padStart(2, '0');
+        return `${year}${month}${day}`;
+    }
+
+    getTomorrowDateFormatted() {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const year = tomorrow.getFullYear();
+        const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
+        const day = String(tomorrow.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     async loadConfig(configPath = 'config.json') {
         try {
             const configData = await fs.readFile(configPath, 'utf8');
@@ -21,7 +39,7 @@ class HKULibraryBooking {
             
             console.log('✓ Configuration loaded successfully');
             
-              // Check if credentials are provided in environment variables
+            // Check if credentials are provided in environment variables
             if (process.env.HKU_USERNAME && process.env.HKU_PASSWORD) {
                 console.log('✓ Using credentials from environment variables');
                 this.config.credentials.username = process.env.HKU_USERNAME;
@@ -29,6 +47,12 @@ class HKULibraryBooking {
             } else if (!this.config.credentials.username || !this.config.credentials.password) {
                 throw new Error('Credentials not found in config.json or environment variables');
             }
+
+            // Auto-update the date to tomorrow
+            const tomorrowDate = this.getTomorrowDate();
+            this.config.preferences.defaultDate = tomorrowDate;
+            console.log(`📅 Booking date set to: ${tomorrowDate} (Tomorrow)`);
+            
             return this.config;
         } catch (error) {
             console.error('❌ Error loading config file:', error.message);
@@ -39,10 +63,12 @@ class HKULibraryBooking {
                     "password": process.env.HKU_PASSWORD
                 },
                 "preferences": {
-                    "defaultDate": "20251121",
+                    "defaultDate": this.getTomorrowDate(), // Auto-set to tomorrow
                     "defaultDescription": "Study session",
                     "maxRetries": 3,
-                    "retryDelay": 2000
+                    "retryDelay": 2000,
+                    "maxSuccessfulBookings": 2,
+                    "stopAfterMaxBookings": true
                 },
                 "bookingOptions": [
                     {
@@ -50,38 +76,39 @@ class HKULibraryBooking {
                         "library": "5",
                         "facilityType": "29",
                         "facility": "268",
-                        "sessionTime": "05000600",
-                        "description": "Study Room 12 - 05:00-06:00"
+                        "sessionTime": "10001100",
+                        "description": "Study Room 12 - 10:00-11:00"
                     },
                     {
                         "priority": 2,
                         "library": "5",
                         "facilityType": "29",
                         "facility": "269",
-                        "sessionTime": "05000600",
-                        "description": "Study Room 13 - 05:00-06:00"
+                        "sessionTime": "10001100",
+                        "description": "Study Room 13 - 10:00-11:00"
                     },
                     {
                         "priority": 3,
                         "library": "5",
                         "facilityType": "29",
-                        "facility": "268",
-                        "sessionTime": "04000500",
-                        "description": "Study Room 12 - 04:00-05:00"
+                        "facility": "270",
+                        "sessionTime": "10001100",
+                        "description": "Study Room 14 - 10:00-11:00"
                     },
                     {
                         "priority": 4,
                         "library": "5",
                         "facilityType": "29",
-                        "facility": "270",
-                        "sessionTime": "05000600",
-                        "description": "Study Room 14 - 05:00-06:00"
+                        "facility": "271",
+                        "sessionTime": "10001100",
+                        "description": "Study Room 15 - 10:00-11:00"
                     }
                 ]
             };
             
             await fs.writeFile(configPath, JSON.stringify(defaultConfig, null, 2));
             console.log('📁 Default config file created. Please edit config.json with your credentials.');
+            console.log(`📅 Auto-configured for date: ${defaultConfig.preferences.defaultDate} (Tomorrow)`);
             process.exit(1);
         }
     }
@@ -172,59 +199,69 @@ class HKULibraryBooking {
         return successIndicators.some(indicator => indicator);
     }
 
-  async tryMultipleBookings() {
-    if (!this.config) {
-        throw new Error('Configuration not loaded');
-    }
-
-    const bookingOptions = this.config.bookingOptions.sort((a, b) => a.priority - b.priority);
-    const maxRetries = this.config.preferences.maxRetries || 3;
-    const maxSuccessfulBookings = this.config.preferences.maxSuccessfulBookings || 2;
-    
-    let successfulBookings = 0;
-    const bookedOptions = [];
-
-    console.log(`🔄 Trying ${bookingOptions.length} booking options (max ${maxSuccessfulBookings} successful bookings)...`);
-
-    for (const option of bookingOptions) {
-        // Stop if we've reached the maximum number of successful bookings
-        if (successfulBookings >= maxSuccessfulBookings) {
-            console.log(`✅ Reached maximum of ${maxSuccessfulBookings} successful bookings. Stopping.`);
-            break;
+    async tryMultipleBookings() {
+        if (!this.config) {
+            throw new Error('Configuration not loaded');
         }
 
-        console.log(`\n🎯 Attempting option ${option.priority}: ${option.description}`);
+        const bookingOptions = this.config.bookingOptions.sort((a, b) => a.priority - b.priority);
+        const maxRetries = this.config.preferences.maxRetries || 3;
+        const maxSuccessfulBookings = this.config.preferences.maxSuccessfulBookings || 2;
         
-        for (let attempt = 1; attempt <= maxRetries; attempt++) {
-            console.log(`  Attempt ${attempt}/${maxRetries}...`);
-            
-            try {
-                const success = await this.bookRoom(
-                    option.library,
-                    option.facilityType,
-                    option.facility,
-                    this.config.preferences.defaultDate,
-                    option.sessionTime,
-                    option.description
-                );
+        let successfulBookings = 0;
+        const bookedOptions = [];
 
-                if (success) {
-                    console.log(`🎉 Successfully booked: ${option.description}`);
-                    successfulBookings++;
-                    bookedOptions.push(option);
-                    
-                    // Stop if we've reached the maximum
-                    if (successfulBookings >= maxSuccessfulBookings) {
-                        console.log(`✅ Reached maximum of ${maxSuccessfulBookings} successful bookings.`);
-                        return {
-                            success: true,
-                            bookedOptions: bookedOptions,
-                            totalBookings: successfulBookings
-                        };
+        const tomorrowDate = this.getTomorrowDate();
+        console.log(`🔄 Trying ${bookingOptions.length} booking options for ${tomorrowDate} (Tomorrow)...`);
+
+        for (const option of bookingOptions) {
+            // Stop if we've reached the maximum number of successful bookings
+            if (successfulBookings >= maxSuccessfulBookings) {
+                console.log(`✅ Reached maximum of ${maxSuccessfulBookings} successful bookings. Stopping.`);
+                break;
+            }
+
+            console.log(`\n🎯 Attempting option ${option.priority}: ${option.description}`);
+            
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                console.log(`  Attempt ${attempt}/${maxRetries}...`);
+                
+                try {
+                    const success = await this.bookRoom(
+                        option.library,
+                        option.facilityType,
+                        option.facility,
+                        tomorrowDate, // Use tomorrow's date
+                        option.sessionTime,
+                        option.description
+                    );
+
+                    if (success) {
+                        console.log(`🎉 Successfully booked: ${option.description}`);
+                        successfulBookings++;
+                        bookedOptions.push(option);
+                        
+                        // Stop if we've reached the maximum
+                        if (successfulBookings >= maxSuccessfulBookings) {
+                            console.log(`✅ Reached maximum of ${maxSuccessfulBookings} successful bookings.`);
+                            return {
+                                success: true,
+                                bookedOptions: bookedOptions,
+                                totalBookings: successfulBookings
+                            };
+                        }
+                        break; // Move to next option after success
+                    } else {
+                        console.log(`  ❌ Attempt ${attempt} failed for: ${option.description}`);
+                        
+                        if (attempt < maxRetries) {
+                            const delay = this.config.preferences.retryDelay || 2000;
+                            console.log(`  ⏳ Waiting ${delay}ms before retry...`);
+                            await this.delay(delay);
+                        }
                     }
-                    break; // Move to next option after success
-                } else {
-                    console.log(`  ❌ Attempt ${attempt} failed for: ${option.description}`);
+                } catch (error) {
+                    console.error(`  💥 Error during attempt ${attempt}:`, error.message);
                     
                     if (attempt < maxRetries) {
                         const delay = this.config.preferences.retryDelay || 2000;
@@ -232,36 +269,27 @@ class HKULibraryBooking {
                         await this.delay(delay);
                     }
                 }
-            } catch (error) {
-                console.error(`  💥 Error during attempt ${attempt}:`, error.message);
-                
-                if (attempt < maxRetries) {
-                    const delay = this.config.preferences.retryDelay || 2000;
-                    console.log(`  ⏳ Waiting ${delay}ms before retry...`);
-                    await this.delay(delay);
-                }
             }
+            
+            console.log(`  📝 Moving to next option after ${maxRetries} attempts`);
         }
-        
-        console.log(`  📝 Moving to next option after ${maxRetries} attempts`);
-    }
 
-    if (successfulBookings > 0) {
-        console.log(`✅ Booked ${successfulBookings} room(s) successfully`);
-        return {
-            success: true,
-            bookedOptions: bookedOptions,
-            totalBookings: successfulBookings
-        };
-    } else {
-        console.log('❌ All booking options exhausted. No rooms booked.');
-        return { 
-            success: false, 
-            bookedOptions: [], 
-            totalBookings: 0 
-        };
+        if (successfulBookings > 0) {
+            console.log(`✅ Booked ${successfulBookings} room(s) successfully for tomorrow`);
+            return {
+                success: true,
+                bookedOptions: bookedOptions,
+                totalBookings: successfulBookings
+            };
+        } else {
+            console.log('❌ All booking options exhausted. No rooms booked for tomorrow.');
+            return { 
+                success: false, 
+                bookedOptions: [], 
+                totalBookings: 0 
+            };
+        }
     }
-}
 
     async bookRoom(library, facilityType, facility, date, sessionTime, description = 'Study session') {
         console.log(`  Starting booking: ${description}`);
@@ -383,7 +411,7 @@ class HKULibraryBooking {
             '22002300': '20', '23002345': '21',
         };
         
-        return sessionMapping[sessionTime] || '5';
+        return sessionMapping[sessionTime] || '8';
     }
 
     async delay(ms) {
@@ -407,7 +435,7 @@ class HKULibraryBooking {
     }
 }
 
-// Scheduling function
+// Enhanced scheduler for tomorrow's bookings
 class BookingScheduler {
     constructor() {
         this.bookingSystem = new HKULibraryBooking();
@@ -425,10 +453,11 @@ class BookingScheduler {
         }
         
         console.log(`⏰ Booking scheduled for: ${targetTime.toLocaleString()}`);
+        console.log(`📅 Will book rooms for: ${this.bookingSystem.getTomorrowDate()} (Tomorrow)`);
         console.log(`⏳ Waiting ${Math.round(timeUntilRun / 1000 / 60)} minutes...`);
         
         setTimeout(async () => {
-            console.log('🕒 Scheduled time reached! Starting booking process...');
+            console.log('🕒 Scheduled time reached! Starting booking process for tomorrow...');
             await this.runBooking();
         }, timeUntilRun);
     }
@@ -444,10 +473,12 @@ class BookingScheduler {
             const result = await this.bookingSystem.tryMultipleBookings();
             
             if (result.success) {
-                console.log(`🎉 SUCCESS: Booked ${result.bookedOption.description}`);
-                // You can add notification here (email, etc.)
+                console.log(`🎉 SUCCESS: Booked ${result.totalBookings} room(s) for tomorrow`);
+                result.bookedOptions.forEach(option => {
+                    console.log(`   - ${option.description}`);
+                });
             } else {
-                console.log('❌ FAILED: No rooms available');
+                console.log('❌ FAILED: No rooms available for tomorrow');
             }
             
         } catch (error) {
@@ -457,7 +488,7 @@ class BookingScheduler {
         }
     }
 
-    // Run at specific time every day
+    // Run at specific time every day for tomorrow's bookings
     scheduleDaily(hour, minute) {
         const now = new Date();
         const target = new Date();
@@ -487,25 +518,26 @@ async function main() {
     const args = process.argv.slice(2);
     
     if (args.includes('--immediate') || args.includes('-i')) {
-        console.log('🚀 Running immediately...');
+        console.log('🚀 Running immediately for tomorrow...');
         await scheduler.runBooking();
     } else if (args.includes('--schedule') || args.includes('-s')) {
-        // Schedule for 7:00 AM tomorrow (when bookings typically open)
+        // Schedule for 10:00 AM tomorrow (when bookings typically open)
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
-        tomorrow.setHours(7, 0, 0, 0);
+        tomorrow.setHours(10, 0, 0, 0);
         
         scheduler.scheduleBooking(tomorrow);
     } else if (args.includes('--daily') || args.includes('-d')) {
-        // Run daily at 7:00 AM
-        scheduler.scheduleDaily(7, 0);
+        // Run daily at 10:00 AM for tomorrow's bookings
+        console.log('📅 Setting up daily booking at 10:00 AM for tomorrow\'s rooms');
+        scheduler.scheduleDaily(10, 0);
     } else {
         // Interactive mode
         console.log('📋 Usage:');
-        console.log('  node booking.js --immediate    Run booking immediately');
-        console.log('  node booking.js --schedule     Schedule for tomorrow 7:00 AM');
-        console.log('  node booking.js --daily        Run daily at 7:00 AM');
-        console.log('\n🚀 Running in immediate mode...');
+        console.log('  node booking.js --immediate    Run booking immediately for tomorrow');
+        console.log('  node booking.js --schedule     Schedule for tomorrow 10:00 AM');
+        console.log('  node booking.js --daily        Run daily at 10:00 AM for tomorrow');
+        console.log('\n🚀 Running in immediate mode for tomorrow...');
         await scheduler.runBooking();
     }
 }
