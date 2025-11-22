@@ -1,0 +1,1248 @@
+{
+  "credentials": {
+    "username": "u3647429",
+    "password": "IhateHarvard2024"
+  },
+  "preferences": {
+    "defaultDate": "20251121",
+    "defaultDescription": "Study session",
+    "maxRetries": 2,
+    "retryDelay": 1500,
+    "maxSuccessfulBookings": 2,
+    "stopAfterMaxBookings": true
+  },
+  "bookingOptions": [
+    {
+      "priority": 1,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "09001000",
+      "description": "Study Room 1 - 09:00-10:00"
+    },
+    {
+      "priority": 2,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "09001000",
+      "description": "Study Room 2 - 09:00-10:00"
+    },
+    {
+      "priority": 3,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "09001000",
+      "description": "Study Room 3 - 09:00-10:00"
+    },
+    {
+      "priority": 4,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "09001000",
+      "description": "Study Room 4 - 09:00-10:00"
+    },
+    {
+      "priority": 5,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "09001000",
+      "description": "Study Room 5 - 09:00-10:00"
+    },
+    {
+      "priority": 6,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "09001000",
+      "description": "Study Room 6 - 09:00-10:00"
+    },
+    {
+      "priority": 7,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "09001000",
+      "description": "Study Room 7 - 09:00-10:00"
+    },
+    {
+      "priority": 8,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "09001000",
+      "description": "Study Room 8 - 09:00-10:00"
+    },
+    {
+      "priority": 9,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "09001000",
+      "description": "Study Room 12 - 09:00-10:00"
+    },
+    {
+      "priority": 10,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "09001000",
+      "description": "Study Room 13 - 09:00-10:00"
+    },
+    {
+      "priority": 11,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "09001000",
+      "description": "Study Room 14 - 09:00-10:00"
+    },
+    {
+      "priority": 12,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "09001000",
+      "description": "Study Room 15 - 09:00-10:00"
+    },
+    {
+      "priority": 13,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "09001000",
+      "description": "Study Room 18 - 09:00-10:00"
+    },
+    {
+      "priority": 14,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "09001000",
+      "description": "Study Room 19 - 09:00-10:00"
+    },
+    {
+      "priority": 15,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "10001100",
+      "description": "Study Room 1 - 10:00-11:00"
+    },
+    {
+      "priority": 16,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "10001100",
+      "description": "Study Room 2 - 10:00-11:00"
+    },
+    {
+      "priority": 17,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "10001100",
+      "description": "Study Room 3 - 10:00-11:00"
+    },
+    {
+      "priority": 18,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "10001100",
+      "description": "Study Room 4 - 10:00-11:00"
+    },
+    {
+      "priority": 19,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "10001100",
+      "description": "Study Room 5 - 10:00-11:00"
+    },
+    {
+      "priority": 20,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "10001100",
+      "description": "Study Room 6 - 10:00-11:00"
+    },
+    {
+      "priority": 21,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "10001100",
+      "description": "Study Room 7 - 10:00-11:00"
+    },
+    {
+      "priority": 22,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "10001100",
+      "description": "Study Room 8 - 10:00-11:00"
+    },
+    {
+      "priority": 23,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "10001100",
+      "description": "Study Room 12 - 10:00-11:00"
+    },
+    {
+      "priority": 24,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "10001100",
+      "description": "Study Room 13 - 10:00-11:00"
+    },
+    {
+      "priority": 25,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "10001100",
+      "description": "Study Room 14 - 10:00-11:00"
+    },
+    {
+      "priority": 26,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "10001100",
+      "description": "Study Room 15 - 10:00-11:00"
+    },
+    {
+      "priority": 27,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "10001100",
+      "description": "Study Room 18 - 10:00-11:00"
+    },
+    {
+      "priority": 28,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "10001100",
+      "description": "Study Room 19 - 10:00-11:00"
+    },
+    {
+      "priority": 29,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "11001200",
+      "description": "Study Room 1 - 11:00-12:00"
+    },
+    {
+      "priority": 30,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "11001200",
+      "description": "Study Room 2 - 11:00-12:00"
+    },
+    {
+      "priority": 31,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "11001200",
+      "description": "Study Room 3 - 11:00-12:00"
+    },
+    {
+      "priority": 32,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "11001200",
+      "description": "Study Room 4 - 11:00-12:00"
+    },
+    {
+      "priority": 33,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "11001200",
+      "description": "Study Room 5 - 11:00-12:00"
+    },
+    {
+      "priority": 34,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "11001200",
+      "description": "Study Room 6 - 11:00-12:00"
+    },
+    {
+      "priority": 35,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "11001200",
+      "description": "Study Room 7 - 11:00-12:00"
+    },
+    {
+      "priority": 36,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "11001200",
+      "description": "Study Room 8 - 11:00-12:00"
+    },
+    {
+      "priority": 37,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "11001200",
+      "description": "Study Room 12 - 11:00-12:00"
+    },
+    {
+      "priority": 38,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "11001200",
+      "description": "Study Room 13 - 11:00-12:00"
+    },
+    {
+      "priority": 39,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "11001200",
+      "description": "Study Room 14 - 11:00-12:00"
+    },
+    {
+      "priority": 40,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "11001200",
+      "description": "Study Room 15 - 11:00-12:00"
+    },
+    {
+      "priority": 41,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "11001200",
+      "description": "Study Room 18 - 11:00-12:00"
+    },
+    {
+      "priority": 42,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "11001200",
+      "description": "Study Room 19 - 11:00-12:00"
+    },
+    {
+      "priority": 43,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "12001300",
+      "description": "Study Room 1 - 12:00-13:00"
+    },
+    {
+      "priority": 44,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "12001300",
+      "description": "Study Room 2 - 12:00-13:00"
+    },
+    {
+      "priority": 45,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "12001300",
+      "description": "Study Room 3 - 12:00-13:00"
+    },
+    {
+      "priority": 46,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "12001300",
+      "description": "Study Room 4 - 12:00-13:00"
+    },
+    {
+      "priority": 47,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "12001300",
+      "description": "Study Room 5 - 12:00-13:00"
+    },
+    {
+      "priority": 48,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "12001300",
+      "description": "Study Room 6 - 12:00-13:00"
+    },
+    {
+      "priority": 49,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "12001300",
+      "description": "Study Room 7 - 12:00-13:00"
+    },
+    {
+      "priority": 50,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "12001300",
+      "description": "Study Room 8 - 12:00-13:00"
+    },
+    {
+      "priority": 51,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "12001300",
+      "description": "Study Room 12 - 12:00-13:00"
+    },
+    {
+      "priority": 52,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "12001300",
+      "description": "Study Room 13 - 12:00-13:00"
+    },
+    {
+      "priority": 53,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "12001300",
+      "description": "Study Room 14 - 12:00-13:00"
+    },
+    {
+      "priority": 54,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "12001300",
+      "description": "Study Room 15 - 12:00-13:00"
+    },
+    {
+      "priority": 55,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "12001300",
+      "description": "Study Room 18 - 12:00-13:00"
+    },
+    {
+      "priority": 56,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "12001300",
+      "description": "Study Room 19 - 12:00-13:00"
+    },
+    {
+      "priority": 57,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "13001400",
+      "description": "Study Room 1 - 13:00-14:00"
+    },
+    {
+      "priority": 58,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "13001400",
+      "description": "Study Room 2 - 13:00-14:00"
+    },
+    {
+      "priority": 59,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "13001400",
+      "description": "Study Room 3 - 13:00-14:00"
+    },
+    {
+      "priority": 60,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "13001400",
+      "description": "Study Room 4 - 13:00-14:00"
+    },
+    {
+      "priority": 61,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "13001400",
+      "description": "Study Room 5 - 13:00-14:00"
+    },
+    {
+      "priority": 62,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "13001400",
+      "description": "Study Room 6 - 13:00-14:00"
+    },
+    {
+      "priority": 63,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "13001400",
+      "description": "Study Room 7 - 13:00-14:00"
+    },
+    {
+      "priority": 64,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "13001400",
+      "description": "Study Room 8 - 13:00-14:00"
+    },
+    {
+      "priority": 65,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "13001400",
+      "description": "Study Room 12 - 13:00-14:00"
+    },
+    {
+      "priority": 66,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "13001400",
+      "description": "Study Room 13 - 13:00-14:00"
+    },
+    {
+      "priority": 67,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "13001400",
+      "description": "Study Room 14 - 13:00-14:00"
+    },
+    {
+      "priority": 68,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "13001400",
+      "description": "Study Room 15 - 13:00-14:00"
+    },
+    {
+      "priority": 69,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "13001400",
+      "description": "Study Room 18 - 13:00-14:00"
+    },
+    {
+      "priority": 70,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "13001400",
+      "description": "Study Room 19 - 13:00-14:00"
+    },
+    {
+      "priority": 71,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "14001500",
+      "description": "Study Room 1 - 14:00-15:00"
+    },
+    {
+      "priority": 72,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "14001500",
+      "description": "Study Room 2 - 14:00-15:00"
+    },
+    {
+      "priority": 73,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "14001500",
+      "description": "Study Room 3 - 14:00-15:00"
+    },
+    {
+      "priority": 74,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "14001500",
+      "description": "Study Room 4 - 14:00-15:00"
+    },
+    {
+      "priority": 75,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "14001500",
+      "description": "Study Room 5 - 14:00-15:00"
+    },
+    {
+      "priority": 76,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "14001500",
+      "description": "Study Room 6 - 14:00-15:00"
+    },
+    {
+      "priority": 77,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "14001500",
+      "description": "Study Room 7 - 14:00-15:00"
+    },
+    {
+      "priority": 78,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "14001500",
+      "description": "Study Room 8 - 14:00-15:00"
+    },
+    {
+      "priority": 79,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "14001500",
+      "description": "Study Room 12 - 14:00-15:00"
+    },
+    {
+      "priority": 80,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "14001500",
+      "description": "Study Room 13 - 14:00-15:00"
+    },
+    {
+      "priority": 81,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "14001500",
+      "description": "Study Room 14 - 14:00-15:00"
+    },
+    {
+      "priority": 82,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "14001500",
+      "description": "Study Room 15 - 14:00-15:00"
+    },
+    {
+      "priority": 83,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "14001500",
+      "description": "Study Room 18 - 14:00-15:00"
+    },
+    {
+      "priority": 84,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "14001500",
+      "description": "Study Room 19 - 14:00-15:00"
+    },
+    {
+      "priority": 85,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "15001600",
+      "description": "Study Room 1 - 15:00-16:00"
+    },
+    {
+      "priority": 86,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "15001600",
+      "description": "Study Room 2 - 15:00-16:00"
+    },
+    {
+      "priority": 87,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "15001600",
+      "description": "Study Room 3 - 15:00-16:00"
+    },
+    {
+      "priority": 88,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "15001600",
+      "description": "Study Room 4 - 15:00-16:00"
+    },
+    {
+      "priority": 89,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "15001600",
+      "description": "Study Room 5 - 15:00-16:00"
+    },
+    {
+      "priority": 90,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "15001600",
+      "description": "Study Room 6 - 15:00-16:00"
+    },
+    {
+      "priority": 91,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "15001600",
+      "description": "Study Room 7 - 15:00-16:00"
+    },
+    {
+      "priority": 92,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "15001600",
+      "description": "Study Room 8 - 15:00-16:00"
+    },
+    {
+      "priority": 93,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "15001600",
+      "description": "Study Room 12 - 15:00-16:00"
+    },
+    {
+      "priority": 94,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "15001600",
+      "description": "Study Room 13 - 15:00-16:00"
+    },
+    {
+      "priority": 95,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "15001600",
+      "description": "Study Room 14 - 15:00-16:00"
+    },
+    {
+      "priority": 96,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "15001600",
+      "description": "Study Room 15 - 15:00-16:00"
+    },
+    {
+      "priority": 97,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "15001600",
+      "description": "Study Room 18 - 15:00-16:00"
+    },
+    {
+      "priority": 98,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "15001600",
+      "description": "Study Room 19 - 15:00-16:00"
+    },
+    {
+      "priority": 99,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "16001700",
+      "description": "Study Room 1 - 16:00-17:00"
+    },
+    {
+      "priority": 100,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "16001700",
+      "description": "Study Room 2 - 16:00-17:00"
+    },
+    {
+      "priority": 101,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "16001700",
+      "description": "Study Room 3 - 16:00-17:00"
+    },
+    {
+      "priority": 102,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "16001700",
+      "description": "Study Room 4 - 16:00-17:00"
+    },
+    {
+      "priority": 103,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "16001700",
+      "description": "Study Room 5 - 16:00-17:00"
+    },
+    {
+      "priority": 104,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "16001700",
+      "description": "Study Room 6 - 16:00-17:00"
+    },
+    {
+      "priority": 105,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "16001700",
+      "description": "Study Room 7 - 16:00-17:00"
+    },
+    {
+      "priority": 106,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "16001700",
+      "description": "Study Room 8 - 16:00-17:00"
+    },
+    {
+      "priority": 107,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "16001700",
+      "description": "Study Room 12 - 16:00-17:00"
+    },
+    {
+      "priority": 108,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "16001700",
+      "description": "Study Room 13 - 16:00-17:00"
+    },
+    {
+      "priority": 109,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "16001700",
+      "description": "Study Room 14 - 16:00-17:00"
+    },
+    {
+      "priority": 110,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "16001700",
+      "description": "Study Room 15 - 16:00-17:00"
+    },
+    {
+      "priority": 111,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "16001700",
+      "description": "Study Room 18 - 16:00-17:00"
+    },
+    {
+      "priority": 112,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "16001700",
+      "description": "Study Room 19 - 16:00-17:00"
+    },
+    {
+      "priority": 113,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "17001800",
+      "description": "Study Room 1 - 17:00-18:00"
+    },
+    {
+      "priority": 114,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "17001800",
+      "description": "Study Room 2 - 17:00-18:00"
+    },
+    {
+      "priority": 115,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "17001800",
+      "description": "Study Room 3 - 17:00-18:00"
+    },
+    {
+      "priority": 116,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "17001800",
+      "description": "Study Room 4 - 17:00-18:00"
+    },
+    {
+      "priority": 117,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "17001800",
+      "description": "Study Room 5 - 17:00-18:00"
+    },
+    {
+      "priority": 118,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "17001800",
+      "description": "Study Room 6 - 17:00-18:00"
+    },
+    {
+      "priority": 119,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "17001800",
+      "description": "Study Room 7 - 17:00-18:00"
+    },
+    {
+      "priority": 120,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "17001800",
+      "description": "Study Room 8 - 17:00-18:00"
+    },
+    {
+      "priority": 121,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "17001800",
+      "description": "Study Room 12 - 17:00-18:00"
+    },
+    {
+      "priority": 122,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "17001800",
+      "description": "Study Room 13 - 17:00-18:00"
+    },
+    {
+      "priority": 123,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "17001800",
+      "description": "Study Room 14 - 17:00-18:00"
+    },
+    {
+      "priority": 124,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "17001800",
+      "description": "Study Room 15 - 17:00-18:00"
+    },
+    {
+      "priority": 125,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "17001800",
+      "description": "Study Room 18 - 17:00-18:00"
+    },
+    {
+      "priority": 126,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "17001800",
+      "description": "Study Room 19 - 17:00-18:00"
+    },
+    {
+      "priority": 127,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "18001900",
+      "description": "Study Room 1 - 18:00-19:00"
+    },
+    {
+      "priority": 128,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "18001900",
+      "description": "Study Room 2 - 18:00-19:00"
+    },
+    {
+      "priority": 129,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "18001900",
+      "description": "Study Room 3 - 18:00-19:00"
+    },
+    {
+      "priority": 130,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "18001900",
+      "description": "Study Room 4 - 18:00-19:00"
+    },
+    {
+      "priority": 131,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "18001900",
+      "description": "Study Room 5 - 18:00-19:00"
+    },
+    {
+      "priority": 132,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "18001900",
+      "description": "Study Room 6 - 18:00-19:00"
+    },
+    {
+      "priority": 133,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "18001900",
+      "description": "Study Room 7 - 18:00-19:00"
+    },
+    {
+      "priority": 134,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "18001900",
+      "description": "Study Room 8 - 18:00-19:00"
+    },
+    {
+      "priority": 135,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "18001900",
+      "description": "Study Room 12 - 18:00-19:00"
+    },
+    {
+      "priority": 136,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "18001900",
+      "description": "Study Room 13 - 18:00-19:00"
+    },
+    {
+      "priority": 137,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "18001900",
+      "description": "Study Room 14 - 18:00-19:00"
+    },
+    {
+      "priority": 138,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "18001900",
+      "description": "Study Room 15 - 18:00-19:00"
+    },
+    {
+      "priority": 139,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "18001900",
+      "description": "Study Room 18 - 18:00-19:00"
+    },
+    {
+      "priority": 140,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "18001900",
+      "description": "Study Room 19 - 18:00-19:00"
+    },
+    {
+      "priority": 141,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "258",
+      "sessionTime": "19002000",
+      "description": "Study Room 1 - 19:00-20:00"
+    },
+    {
+      "priority": 142,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "259",
+      "sessionTime": "19002000",
+      "description": "Study Room 2 - 19:00-20:00"
+    },
+    {
+      "priority": 143,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "260",
+      "sessionTime": "19002000",
+      "description": "Study Room 3 - 19:00-20:00"
+    },
+    {
+      "priority": 144,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "261",
+      "sessionTime": "19002000",
+      "description": "Study Room 4 - 19:00-20:00"
+    },
+    {
+      "priority": 145,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "263",
+      "sessionTime": "19002000",
+      "description": "Study Room 5 - 19:00-20:00"
+    },
+    {
+      "priority": 146,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "264",
+      "sessionTime": "19002000",
+      "description": "Study Room 6 - 19:00-20:00"
+    },
+    {
+      "priority": 147,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "265",
+      "sessionTime": "19002000",
+      "description": "Study Room 7 - 19:00-20:00"
+    },
+    {
+      "priority": 148,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "266",
+      "sessionTime": "19002000",
+      "description": "Study Room 8 - 19:00-20:00"
+    },
+    {
+      "priority": 149,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "268",
+      "sessionTime": "19002000",
+      "description": "Study Room 12 - 19:00-20:00"
+    },
+    {
+      "priority": 150,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "269",
+      "sessionTime": "19002000",
+      "description": "Study Room 13 - 19:00-20:00"
+    },
+    {
+      "priority": 151,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "270",
+      "sessionTime": "19002000",
+      "description": "Study Room 14 - 19:00-20:00"
+    },
+    {
+      "priority": 152,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "271",
+      "sessionTime": "19002000",
+      "description": "Study Room 15 - 19:00-20:00"
+    },
+    {
+      "priority": 153,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "274",
+      "sessionTime": "19002000",
+      "description": "Study Room 18 - 19:00-20:00"
+    },
+    {
+      "priority": 154,
+      "library": "5",
+      "facilityType": "29",
+      "facility": "275",
+      "sessionTime": "19002000",
+      "description": "Study Room 19 - 19:00-20:00"
+    }
+  ]
+}

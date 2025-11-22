@@ -1,0 +1,22 @@
+{
+  "name": "hku-library-booking",
+  "version": "1.0.0",
+  "description": "Automated HKU Library Room Booking",
+  "main": "booking.js",
+  "scripts": {
+    "start": "node booking.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "puppeteer": "^21.11.0"
+  },
+  "keywords": [
+    "hku",
+    "library",
+    "booking",
+    "automation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "type": "commonjs"
+}
