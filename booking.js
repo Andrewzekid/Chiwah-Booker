@@ -12,6 +12,7 @@ class HKULibraryBooking {
         this.browser = null;
         this.page = null;
         this.config = null;
+        this.bookedTimeSlots = new Set(); // Track booked time slots
     }
 
     getTomorrowDate() {
@@ -30,6 +31,53 @@ class HKULibraryBooking {
         const month = String(tomorrow.getMonth() + 1).padStart(2, '0');
         const day = String(tomorrow.getDate()).padStart(2, '0');
         return `${year}-${month}-${day}`;
+    }
+
+    // Get next time slot based on current time slot
+    getNextTimeSlot(currentTimeSlot) {
+        const timeHierarchy = [
+            '09001000', // 09:00-10:00
+            '10001100', // 10:00-11:00
+            '11001200', // 11:00-12:00
+            '12001300', // 12:00-13:00
+            '13001400', // 13:00-14:00
+            '14001500', // 14:00-15:00
+            '15001600', // 15:00-16:00
+            '16001700', // 16:00-17:00
+            '17001800', // 17:00-18:00
+            '18001900', // 18:00-19:00
+            '19002000'  // 19:00-20:00
+        ];
+
+        const currentIndex = timeHierarchy.indexOf(currentTimeSlot);
+        if (currentIndex === -1 || currentIndex === timeHierarchy.length - 1) {
+            return null; // No next time slot
+        }
+        return timeHierarchy[currentIndex + 1];
+    }
+
+    // Group booking options by time slot
+    groupOptionsByTimeSlot(bookingOptions) {
+        const grouped = {};
+        bookingOptions.forEach(option => {
+            if (!grouped[option.sessionTime]) {
+                grouped[option.sessionTime] = [];
+            }
+            grouped[option.sessionTime].push(option);
+        });
+        return grouped;
+    }
+
+    // Sort time slots in chronological order
+    getSortedTimeSlots(groupedOptions) {
+        const timeHierarchy = [
+            '09001000', '10001100', '11001200', '12001300', '13001400',
+            '14001500', '15001600', '16001700', '17001800', '18001900', '19002000'
+        ];
+        
+        return Object.keys(groupedOptions)
+            .filter(timeSlot => timeHierarchy.includes(timeSlot))
+            .sort((a, b) => timeHierarchy.indexOf(a) - timeHierarchy.indexOf(b));
     }
 
     async loadConfig(configPath = 'config.json') {
@@ -76,11 +124,35 @@ class HKULibraryBooking {
                         "library": "5",
                         "facilityType": "29",
                         "facility": "268",
+                        "sessionTime": "09001000",
+                        "description": "Study Room 12 - 09:00-10:00"
+                    },
+                    {
+                        "priority": 2,
+                        "library": "5",
+                        "facilityType": "29",
+                        "facility": "269",
+                        "sessionTime": "09001000",
+                        "description": "Study Room 13 - 09:00-10:00"
+                    },
+                    {
+                        "priority": 3,
+                        "library": "5",
+                        "facilityType": "29",
+                        "facility": "270",
+                        "sessionTime": "09001000",
+                        "description": "Study Room 14 - 09:00-10:00"
+                    },
+                    {
+                        "priority": 4,
+                        "library": "5",
+                        "facilityType": "29",
+                        "facility": "268",
                         "sessionTime": "10001100",
                         "description": "Study Room 12 - 10:00-11:00"
                     },
                     {
-                        "priority": 2,
+                        "priority": 5,
                         "library": "5",
                         "facilityType": "29",
                         "facility": "269",
@@ -88,20 +160,12 @@ class HKULibraryBooking {
                         "description": "Study Room 13 - 10:00-11:00"
                     },
                     {
-                        "priority": 3,
+                        "priority": 6,
                         "library": "5",
                         "facilityType": "29",
                         "facility": "270",
                         "sessionTime": "10001100",
                         "description": "Study Room 14 - 10:00-11:00"
-                    },
-                    {
-                        "priority": 4,
-                        "library": "5",
-                        "facilityType": "29",
-                        "facility": "271",
-                        "sessionTime": "10001100",
-                        "description": "Study Room 15 - 10:00-11:00"
                     }
                 ]
             };
@@ -204,55 +268,88 @@ class HKULibraryBooking {
             throw new Error('Configuration not loaded');
         }
 
-        const bookingOptions = this.config.bookingOptions.sort((a, b) => a.priority - b.priority);
-        const maxRetries = this.config.preferences.maxRetries || 3;
         const maxSuccessfulBookings = this.config.preferences.maxSuccessfulBookings || 2;
+        const maxRetries = this.config.preferences.maxRetries || 3;
         
         let successfulBookings = 0;
         const bookedOptions = [];
+        this.bookedTimeSlots.clear(); // Reset for new run
 
         const tomorrowDate = this.getTomorrowDate();
-        console.log(`🔄 Trying ${bookingOptions.length} booking options for ${tomorrowDate} (Tomorrow)...`);
+        console.log(`🔄 Starting booking process for ${tomorrowDate} (Tomorrow)...`);
+        console.log(`🎯 Target: ${maxSuccessfulBookings} bookings across different time slots`);
 
-        for (const option of bookingOptions) {
-            // Stop if we've reached the maximum number of successful bookings
+        // Group options by time slot and sort chronologically
+        const groupedOptions = this.groupOptionsByTimeSlot(this.config.bookingOptions);
+        const sortedTimeSlots = this.getSortedTimeSlots(groupedOptions);
+
+        console.log(`📊 Available time slots: ${sortedTimeSlots.join(', ')}`);
+
+        // Try each time slot in order
+        for (const timeSlot of sortedTimeSlots) {
             if (successfulBookings >= maxSuccessfulBookings) {
                 console.log(`✅ Reached maximum of ${maxSuccessfulBookings} successful bookings. Stopping.`);
                 break;
             }
 
-            console.log(`\n🎯 Attempting option ${option.priority}: ${option.description}`);
-            
-            for (let attempt = 1; attempt <= maxRetries; attempt++) {
-                console.log(`  Attempt ${attempt}/${maxRetries}...`);
-                
-                try {
-                    const success = await this.bookRoom(
-                        option.library,
-                        option.facilityType,
-                        option.facility,
-                        tomorrowDate, // Use tomorrow's date
-                        option.sessionTime,
-                        option.description
-                    );
+            // Skip if we've already booked this time slot
+            if (this.bookedTimeSlots.has(timeSlot)) {
+                console.log(`⏭️  Skipping ${timeSlot} - already booked in this session`);
+                continue;
+            }
 
-                    if (success) {
-                        console.log(`🎉 Successfully booked: ${option.description}`);
-                        successfulBookings++;
-                        bookedOptions.push(option);
-                        
-                        // Stop if we've reached the maximum
-                        if (successfulBookings >= maxSuccessfulBookings) {
-                            console.log(`✅ Reached maximum of ${maxSuccessfulBookings} successful bookings.`);
-                            return {
-                                success: true,
-                                bookedOptions: bookedOptions,
-                                totalBookings: successfulBookings
-                            };
+            console.log(`\n⏰ Attempting time slot: ${timeSlot}`);
+            const timeSlotOptions = groupedOptions[timeSlot].sort((a, b) => a.priority - b.priority);
+
+            let bookedInThisTimeSlot = false;
+
+            for (const option of timeSlotOptions) {
+                if (successfulBookings >= maxSuccessfulBookings) break;
+
+                console.log(`\n🎯 Attempting option ${option.priority}: ${option.description}`);
+                
+                for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                    console.log(`  Attempt ${attempt}/${maxRetries}...`);
+                    
+                    try {
+                        const success = await this.bookRoom(
+                            option.library,
+                            option.facilityType,
+                            option.facility,
+                            tomorrowDate,
+                            option.sessionTime,
+                            option.description
+                        );
+
+                        if (success) {
+                            console.log(`🎉 Successfully booked: ${option.description}`);
+                            successfulBookings++;
+                            bookedOptions.push(option);
+                            this.bookedTimeSlots.add(timeSlot); // Mark this time slot as booked
+                            bookedInThisTimeSlot = true;
+                            
+                            // Stop if we've reached the maximum
+                            if (successfulBookings >= maxSuccessfulBookings) {
+                                console.log(`✅ Reached maximum of ${maxSuccessfulBookings} successful bookings.`);
+                                return {
+                                    success: true,
+                                    bookedOptions: bookedOptions,
+                                    totalBookings: successfulBookings,
+                                    bookedTimeSlots: Array.from(this.bookedTimeSlots)
+                                };
+                            }
+                            break; // Move to next time slot after booking in current one
+                        } else {
+                            console.log(`  ❌ Attempt ${attempt} failed for: ${option.description}`);
+                            
+                            if (attempt < maxRetries) {
+                                const delay = this.config.preferences.retryDelay || 2000;
+                                console.log(`  ⏳ Waiting ${delay}ms before retry...`);
+                                await this.delay(delay);
+                            }
                         }
-                        break; // Move to next option after success
-                    } else {
-                        console.log(`  ❌ Attempt ${attempt} failed for: ${option.description}`);
+                    } catch (error) {
+                        console.error(`  💥 Error during attempt ${attempt}:`, error.message);
                         
                         if (attempt < maxRetries) {
                             const delay = this.config.preferences.retryDelay || 2000;
@@ -260,33 +357,37 @@ class HKULibraryBooking {
                             await this.delay(delay);
                         }
                     }
-                } catch (error) {
-                    console.error(`  💥 Error during attempt ${attempt}:`, error.message);
-                    
-                    if (attempt < maxRetries) {
-                        const delay = this.config.preferences.retryDelay || 2000;
-                        console.log(`  ⏳ Waiting ${delay}ms before retry...`);
-                        await this.delay(delay);
-                    }
+                }
+
+                // If we booked in this time slot, move to next time slot
+                if (bookedInThisTimeSlot) {
+                    console.log(`✅ Booked in time slot ${timeSlot}, moving to next time slot...`);
+                    break;
                 }
             }
-            
-            console.log(`  📝 Moving to next option after ${maxRetries} attempts`);
+
+            // If we exhausted all options in this time slot without booking
+            if (!bookedInThisTimeSlot) {
+                console.log(`❌ No available rooms in time slot ${timeSlot}, moving to next time slot...`);
+            }
         }
 
         if (successfulBookings > 0) {
             console.log(`✅ Booked ${successfulBookings} room(s) successfully for tomorrow`);
+            console.log(`⏰ Booked time slots: ${Array.from(this.bookedTimeSlots).join(', ')}`);
             return {
                 success: true,
                 bookedOptions: bookedOptions,
-                totalBookings: successfulBookings
+                totalBookings: successfulBookings,
+                bookedTimeSlots: Array.from(this.bookedTimeSlots)
             };
         } else {
             console.log('❌ All booking options exhausted. No rooms booked for tomorrow.');
             return { 
                 success: false, 
                 bookedOptions: [], 
-                totalBookings: 0 
+                totalBookings: 0,
+                bookedTimeSlots: []
             };
         }
     }
@@ -411,7 +512,7 @@ class HKULibraryBooking {
             '22002300': '20', '23002345': '21',
         };
         
-        return sessionMapping[sessionTime] || '8';
+        return sessionMapping[sessionTime] || '7';
     }
 
     async delay(ms) {
@@ -474,6 +575,7 @@ class BookingScheduler {
             
             if (result.success) {
                 console.log(`🎉 SUCCESS: Booked ${result.totalBookings} room(s) for tomorrow`);
+                console.log(`⏰ Time slots booked: ${result.bookedTimeSlots.join(', ')}`);
                 result.bookedOptions.forEach(option => {
                     console.log(`   - ${option.description}`);
                 });
