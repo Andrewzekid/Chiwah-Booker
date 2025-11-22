@@ -18,7 +18,7 @@ HKU_PASSWORD=YOUR PASSWORD
 Change the username and password to your username and password.
 
 <h3>Windows Configuration:</h3>
-<h3>##Task Scheduler</h3>
+<h4>Task Scheduler</h4>
 1.Open Task Scheduler (search in Start menu)
 2.Click Create Basic Task
 3.Name: HKU Library Booking
