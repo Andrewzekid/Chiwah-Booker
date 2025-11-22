@@ -2,6 +2,8 @@ const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 const path = require('path');
 
+require('dotenv').config();
+
 class HKULibraryBooking {
     constructor() {
         this.baseUrl = 'https://booking.lib.hku.hk';
@@ -16,15 +18,25 @@ class HKULibraryBooking {
         try {
             const configData = await fs.readFile(configPath, 'utf8');
             this.config = JSON.parse(configData);
+            
             console.log('✓ Configuration loaded successfully');
+            
+              // Check if credentials are provided in environment variables
+            if (process.env.HKU_USERNAME && process.env.HKU_PASSWORD) {
+                console.log('✓ Using credentials from environment variables');
+                this.config.credentials.username = process.env.HKU_USERNAME;
+                this.config.credentials.password = process.env.HKU_PASSWORD;
+            } else if (!this.config.credentials.username || !this.config.credentials.password) {
+                throw new Error('Credentials not found in config.json or environment variables');
+            }
             return this.config;
         } catch (error) {
             console.error('❌ Error loading config file:', error.message);
             // Create default config if doesn't exist
             const defaultConfig = {
                 "credentials": {
-                    "username": "your_username",
-                    "password": "your_password"
+                    "username": process.env.HKU_USERNAME,
+                    "password": process.env.HKU_PASSWORD
                 },
                 "preferences": {
                     "defaultDate": "20251121",
