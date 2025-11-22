@@ -19,15 +19,17 @@ Change the username and password to your username and password.
 
 <h3>Windows Configuration:</h3>
 <h4>Task Scheduler</h4>
-1.Open Task Scheduler (search in Start menu)
-2.Click Create Basic Task
-3.Name: HKU Library Booking
-4.Trigger: Daily at 10:00 AM
-5.Action: Start a program
-6.Program: C:\Windows\System32\cmd.exe
-7.Arguments: /c "C:\Users\Your Username\Downloads\Chiwah Booker\run.bat"
-8.Check Open Properties dialog and click Finish
-9.In Properties:
-10.Run whether user is logged on or not
-11.Configure for: Windows 10
-12.Conditions tab: Uncheck "Start the task only if the computer is on AC power
+<ol>
+<li>Open Task Scheduler (search in Start menu)</li>
+<li>Click Create Basic Task</li>
+<li>Name: HKU Library Booking</li>
+<li>Trigger: Daily at 10:00 AM</li>
+<li>Action: Start a program</li>
+<li>Program: C:\Windows\System32\cmd.exe</li>
+<li>Arguments: /c "C:\Users\Your Username\Downloads\Chiwah Booker\run.bat"</li>
+<li>Check Open Properties dialog and click Finish</li>
+<li>In Properties:</li>
+<li>Run whether user is logged on or not</li>
+<li>Configure for: Windows 10</li>
+<li>Conditions tab: Uncheck "Start the task only if the computer is on AC power</li>
+</ol>
