@@ -25,7 +25,7 @@ Change the username and password to your username and password.
 4.Trigger: Daily at 10:00 AM
 5.Action: Start a program
 6.Program: C:\Windows\System32\cmd.exe
-7.Arguments: /c "C:\Users\andre\Downloads\Chiwah Booker\run.bat"
+7.Arguments: /c "C:\Users\Your Username\Downloads\Chiwah Booker\run.bat"
 8.Check Open Properties dialog and click Finish
 9.In Properties:
 10.Run whether user is logged on or not
