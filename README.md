@@ -141,3 +141,6 @@ Update the path in the .plist file if different from /usr/local/bin/node
 <h4>Manual Testing (Before Automation):</h4>
 <pre><code>cd ~/Downloads/Chiwah-Booker
 node booking.js --immediate</code></pre>
+<h3>TODO</h3>
+<p>There are currently some times when the program crashes upon startup due to network or puppeteer issues.
+I would also think about making a GUI in the future. There are also some functionality improvements. </p>
