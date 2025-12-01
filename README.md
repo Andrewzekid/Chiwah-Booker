@@ -104,7 +104,7 @@ Replace YOUR_USERNAME with your macOS username
 <pre><code># Using Homebrew (recommended)
 brew install node
 
-# Or download from nodejs.org</code></pre>
+Or download from nodejs.org</code></pre>
 </li>
 <li><strong>Install project dependencies</strong>:
 <pre><code>cd ~/Downloads/Chiwah-Booker
@@ -114,7 +114,7 @@ npm install</code></pre>
 <pre><code># Copy the example environment file
 cp .env.example .env
 
-# Edit with your credentials
+Edit with your credentials
 nano .env</code></pre>
 </li>
 <li><strong>Test the script manually first</strong>:
@@ -141,6 +141,9 @@ Update the path in the .plist file if different from /usr/local/bin/node
 <h4>Manual Testing (Before Automation):</h4>
 <pre><code>cd ~/Downloads/Chiwah-Booker
 node booking.js --immediate</code></pre>
+<<<<<<< HEAD
 <h3>TODO</h3>
 <p>There are currently some times when the program crashes upon startup due to network or puppeteer issues.
 I would also think about making a GUI in the future. There are also some functionality improvements. </p>
+=======
+>>>>>>> c5eeef555f01aff8a27cf1a7ac09ce3a3fb420dc
